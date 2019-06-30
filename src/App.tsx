@@ -1,16 +1,13 @@
-import React, {useState} from 'react';
-import Spinner from './components/Spinner';
-import { useDarkmode } from './hooks';
+import React from 'react';
+import PLThemeProvider from './components/ThemeProvider';
 
 const App: React.FC = () => {
-  useDarkmode();
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <Spinner />
-      </header>
-    </div>
+    <PLThemeProvider>
+      <h1>
+        hello, world
+      </h1>
+    </PLThemeProvider>
   );
 }
 

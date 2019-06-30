@@ -1,8 +1,8 @@
-import React, { FC, ImgHTMLAttributes, useState,useEffect } from "react";
+import React, { FC, ImgHTMLAttributes } from "react";
 import ProductLinkLogo from "../../assets/logo.svg"
 import { StyledSpinner } from "./styles";
 
-const ANIMATION_DURATION = 2000;
+const ANIMATION_DURATION = 3000;
 
 const Spinner: FC<SpinnerProps> = props =>
   <StyledSpinner

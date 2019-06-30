@@ -11,7 +11,7 @@ const rotate = keyframes`
   }
 `;
 
-const animationInterpolation = css<SpinnerProps>`animation: ${rotate} ${props => props.duration}ms ease-in-out infinite;`
+const animationInterpolation = css<SpinnerProps>`animation: ${rotate} ${props => props.duration}ms linear infinite;`
 
 export const StyledSpinner = styled.img<SpinnerProps>`
   ${
