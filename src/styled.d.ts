@@ -7,7 +7,25 @@ import "styled-components";
 declare module "styled-components" {
   // tslint:disable-next-line:interface-name - this interface has to be named DefaultTheme
   export interface DefaultTheme {
-    // backgrounds
+
+    // color values
     background: string;
+    border: string;
+
+    // style objects
+    card: Card,
   }
+}
+
+interface CardStyles {
+  background: string;
+  borderRadius: string;
+  borderColor: string;
+}
+
+export interface Card {
+  regular: CardStyles;
+  happy?: CardStyles;
+  warning?: CardStyles;
+  spicy?: CardStyles;
 }

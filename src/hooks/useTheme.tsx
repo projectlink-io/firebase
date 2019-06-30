@@ -1,4 +1,4 @@
-import { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { useEffect, useState, Dispatch, SetStateAction, useCallback } from "react";
 
 /**
  * TODO:
@@ -17,12 +17,12 @@ import { useEffect, useState, Dispatch, SetStateAction } from "react";
 export function useTheme(): UseTheme {
   const [theme, setTheme] = useState<Theme>("light");
 
-  useDarkMode(setTheme);
+  useDarkMode(useCallback(setTheme, []));
 
   return [theme, setTheme];
 }
 
-const useDarkMode = (setTheme: Dispatch<SetStateAction<Theme>>) =>
+const useDarkMode = (setTheme: Dispatch<SetStateAction<Theme>>) => {
   useEffect(() => {
     /**
      * opt out if there's no support
@@ -41,7 +41,8 @@ const useDarkMode = (setTheme: Dispatch<SetStateAction<Theme>>) =>
     return () => {
       mediaQueryList.removeListener(derriveTheme);
     }
-  }, [])
+  }, [setTheme])
+}
 
 type UseTheme = [Theme, Dispatch<SetStateAction<Theme>>]
 type Theme = "light" | "dark";

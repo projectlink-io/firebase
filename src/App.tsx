@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import PLThemeProvider from './components/ThemeProvider';
+import LoginScreen from "./components/LoginScreen";
 
 const App: React.FC = () => {
   return (
     <PLThemeProvider>
-      <h1>
-        hello, world
-      </h1>
+      <Router>
+        <Route path="/" component={LoginScreen} />
+      </Router>
     </PLThemeProvider>
   );
 }

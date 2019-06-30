@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rebass/grid": "^6.0.0",
     "formik": "1.5.7",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "styled-components": "4.2.1",
+    "styled-components": "^5.0.0-beta.6",
     "typescript": "3.5.1"
   },
   "scripts": {
@@ -41,6 +42,8 @@
     "@types/node": "12.0.4",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/rebass__grid": "^6.0.5",
     "@types/styled-components": "4.1.15",
     "jest-dom": "^3.5.0"
   }
