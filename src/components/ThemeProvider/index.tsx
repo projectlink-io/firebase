@@ -36,7 +36,6 @@ const PLThemeProvider: FC<{}> = ({children, ...rest}) => {
   return (
     <ThemeProvider theme={themes[theme]} { ...rest }>
       <>
-       { console.log("theme", theme, themes[theme]) }
         {/* @ts-ignore.
           * styled-component typings conflict
           * with react FC typings

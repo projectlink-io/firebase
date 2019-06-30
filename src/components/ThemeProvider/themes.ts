@@ -13,10 +13,18 @@ export const colors = {
   darkGrey: "#7f7f7f"
 };
 
+const commonThemeProperties = {
+  breakpoints: ["40em", "52em"],
+}
+
 const themes: { light: DefaultTheme, dark: DefaultTheme } = {
   light: {
-    background: "#fafafa",
+    ...commonThemeProperties,
+    background: colors.white,
     border: "#ccc",
+    paragraph: "#5d7079",
+    heading: "#171717",
+    textLowContrast: colors.lightGrey,
     card: {
       regular: {
         background: "#ffffff",
@@ -26,8 +34,12 @@ const themes: { light: DefaultTheme, dark: DefaultTheme } = {
     },
   },
   dark: {
+    ...commonThemeProperties,
     background: "#121212",
     border: "#7f7f7f",
+    paragraph: "#5d7079",
+    heading: colors.lightGrey,
+    textLowContrast: colors.lightGrey,
     card: {
       regular: {
         background: "#121212",

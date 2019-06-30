@@ -11,9 +11,15 @@ declare module "styled-components" {
     // color values
     background: string;
     border: string;
+    paragraph: string;
+    heading: string;
+    textLowContrast: string;
 
     // style objects
     card: Card,
+
+    // misc
+    breakpoints: string[],
   }
 }
 
