@@ -14,12 +14,15 @@ declare module "styled-components" {
     paragraph: string;
     heading: string;
     textLowContrast: string;
+    buttonPrimary: string;
+    buttonSuccess: string;
 
     // style objects
     card: Card,
 
     // misc
     breakpoints: string[],
+    borderRadius: string,
   }
 }
 

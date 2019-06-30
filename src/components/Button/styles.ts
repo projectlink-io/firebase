@@ -1,10 +1,18 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-  padding: 0.333rem 0.5rem;
-  font-size: 1rem;
+  border: none;
+  border-radius: ${props => props.theme.borderRadius};
+
+  color: white;
+  background: ${props => props.theme.buttonSuccess};
+
+  padding: 0.5rem 0.75rem;
   margin-bottom: 1rem;
-  border-radius: 4px;
+
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.0333rem;
 `;
 
 export interface ButtonProps {

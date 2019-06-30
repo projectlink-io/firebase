@@ -1,7 +1,7 @@
 import {DefaultTheme} from "styled-components";
 
 export const themeConstants = {
-  borderRadius: 4,
+  borderRadius: 3,
   pixelGrid: 8,
 }
 
@@ -15,6 +15,7 @@ export const colors = {
 
 const commonThemeProperties = {
   breakpoints: ["40em", "52em"],
+  borderRadius: `${themeConstants.borderRadius}px`,
 }
 
 const themes: { light: DefaultTheme, dark: DefaultTheme } = {
@@ -24,7 +25,9 @@ const themes: { light: DefaultTheme, dark: DefaultTheme } = {
     border: "#ccc",
     paragraph: "#5d7079",
     heading: "#171717",
-    textLowContrast: colors.lightGrey,
+    textLowContrast: colors.lightestGrey,
+    buttonPrimary: "#00C6FE",
+    buttonSuccess: "#2ED06E",
     card: {
       regular: {
         background: "#ffffff",
@@ -40,6 +43,8 @@ const themes: { light: DefaultTheme, dark: DefaultTheme } = {
     paragraph: "#5d7079",
     heading: colors.lightGrey,
     textLowContrast: colors.lightGrey,
+    buttonPrimary: "#00C6FE",
+    buttonSuccess: "#2ED06E",
     card: {
       regular: {
         background: "#121212",

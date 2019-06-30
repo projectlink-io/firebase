@@ -7,10 +7,17 @@ export const StyledInput = styled.input`
   font-size: 1rem;
   display: block;
   width: 100%;
-  border-radius: 4px;
+  border-radius: ${props => props.theme.borderRadius};
   border: 1px solid ${ themed("border") };
   :focus {
     border-color: #007eff;
     outline: none;
+  }
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: ${props => props.theme.textLowContrast};
+  }
+  :-ms-input-placeholder {
+    color: ${props => props.theme.textLowContrast};
   }
 `;
