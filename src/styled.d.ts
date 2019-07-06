@@ -10,10 +10,11 @@ declare module "styled-components" {
 
     // color values
     background: string;
-    border: string;
+    borderColor: string;
     paragraph: string;
     heading: string;
     textLowContrast: string;
+    textHighContrast: string;
     buttonPrimary: string;
     buttonSuccess: string;
 

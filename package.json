@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^6.2.4",
     "formik": "1.5.7",
     "react": "16.8.6",
     "react-dom": "16.8.6",
@@ -42,7 +43,6 @@
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^4.3.4",
-    "@types/rebass__grid": "^6.0.5",
     "@types/styled-components": "4.1.15",
     "jest-dom": "^3.5.0"
   }

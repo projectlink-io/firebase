@@ -6,17 +6,15 @@ export const StyledLogo = styled.img`
   padding: 0.5rem 0 3rem 0;
 `;
 
-export const StyledLoginCard = styled(Card)`
+export const StyledSignUpCard = styled(Card)`
   max-width: 420px;
   margin: auto;
   padding: 1.5rem 2rem 0.5rem 2rem;
   p {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   button {
-    margin-bottom: 3rem;
-  }
-  & p:last-child {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
   }
 `;

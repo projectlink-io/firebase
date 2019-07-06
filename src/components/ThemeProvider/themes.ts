@@ -8,9 +8,11 @@ export const themeConstants = {
 export const colors = {
   white: "#ffffff",
   nearWhite: "#fafafa",
-  lightestGrey: "ebeced",
+  lightestGrey: "#ebeced",
   lightGrey: "#ccc",
-  darkGrey: "#7f7f7f"
+  darkGrey: "#171717",
+  black: "#000",
+  uiBlue: "#0070f3",
 };
 
 const commonThemeProperties = {
@@ -22,27 +24,29 @@ const themes: { light: DefaultTheme, dark: DefaultTheme } = {
   light: {
     ...commonThemeProperties,
     background: colors.white,
-    border: "#ccc",
+    borderColor: colors.lightestGrey,
     paragraph: "#5d7079",
-    heading: "#171717",
+    heading: colors.darkGrey,
     textLowContrast: colors.lightestGrey,
-    buttonPrimary: "#00C6FE",
+    textHighContrast: colors.darkGrey,
+    buttonPrimary: colors.uiBlue,
     buttonSuccess: "#2ED06E",
     card: {
       regular: {
         background: "#ffffff",
         borderRadius: `${themeConstants.borderRadius}px`,
-        borderColor: "#ebeced",
+        borderColor: colors.lightestGrey,
       }
     },
   },
   dark: {
     ...commonThemeProperties,
     background: "#121212",
-    border: "#7f7f7f",
+    borderColor: colors.darkGrey,
     paragraph: "#5d7079",
     heading: colors.lightGrey,
     textLowContrast: colors.lightGrey,
+    textHighContrast: colors.nearWhite,
     buttonPrimary: "#00C6FE",
     buttonSuccess: "#2ED06E",
     card: {

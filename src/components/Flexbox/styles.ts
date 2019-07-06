@@ -8,11 +8,14 @@ export const StyledFlex = styled.div<FlexProps>`
 `;
 
 export const StyledBox = styled.div<BoxProps>`
-  width: 100%;
-  ${props => props.flexGrow ? `flexGrow: ${props.flexGrow};` : null}
-  ${props => props.alignSelf ? `alignSelf: ${props.alignSelf};` : null}
+  ${props => props.w ? `width: ${props.w};` : null}
+  ${props => props.flexGrow ? `flex-grow: ${props.flexGrow};` : null}
+  ${props => props.alignSelf ? `align-self: ${props.alignSelf};` : null}
   @media screen and (min-width: ${props => props.theme.breakpoints[0]}) {
-    ${props => props.w ? `width: ${props.w};` : null}
+    ${props => props.wm ? `width: ${props.w};` : null}
+  }
+  @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+    ${props => props.wl ? `width: ${props.wl};` : null}
   }
 `;
 
@@ -23,6 +26,8 @@ export interface FlexProps {
 }
 export interface BoxProps {
   w?: string;
+  wm?: string;
+  wl?: string;
   alignSelf?: string;
   flexGrow?: number;
 }

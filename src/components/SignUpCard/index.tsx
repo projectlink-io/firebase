@@ -1,28 +1,41 @@
 import React, { FC } from "react";
-import {Formik} from "formik";
+// import {Formik} from "formik";
 import logo_sm_clr from "../../assets/projectlink-logo-sm-clr.png"
-import {StyledLoginCard, StyledLogo} from "./styles";
+import {StyledSignUpCard, StyledLogo} from "./styles";
 
-import Input from "../Input";
+// import Input from "../Input";
 import Button from "../Button";
-import { H1, P } from "..//Typography"
+import GoogleSignInButton from "../GoogleSignInButton";
+import { H1, P } from "../Typography"
+import Flex, { Box } from "../Flexbox";
 import { Link } from "react-router-dom";
 
-const initialValues = {
-  email: "",
-  password: "",
-}
+// const initialValues = {
+//   email: "",
+//   password: "",
+// }
 
-const LoginCard: FC<{}> = () =>
-  <StyledLoginCard>
+const SignUpCard: FC<{}> = () =>
+  <StyledSignUpCard>
     <StyledLogo src={logo_sm_clr} />
     <H1>
-      Welcome back.
+      Get started.
     </H1>
     <P>
-      New to Projectlink? <Link to="/signup">Sign up →</Link>
+      Projectlink is the fastest way to do business. Get started now for free. Already have an account? <Link to="/login">Login →</Link>
     </P>
-    <Formik
+    <Flex alignItems="center">
+      <Box>
+        <GoogleSignInButton />
+      </Box>
+      <Box>
+    <P>
+      Use email →
+    </P>
+      </Box>
+    </Flex>
+    {/* <HiddenForm /> */}
+    {/* <Formik
       initialValues={initialValues}
       onSubmit={() => console.log("submit form")}>
       {
@@ -42,11 +55,10 @@ const LoginCard: FC<{}> = () =>
               value={props.values.password} />
           </>
       }
-    </Formik>
-    <Button title="Sign in"/>
+    </Formik> */}
     <P>
       By continuing you agree to our Terms of Service.
     </P>
-  </StyledLoginCard>
+  </StyledSignUpCard>
 
-export default LoginCard;
+export default SignUpCard;

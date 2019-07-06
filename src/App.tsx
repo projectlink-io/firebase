@@ -1,13 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import Routes from "./components/Routes";
 import PLThemeProvider from './components/ThemeProvider';
-import LoginScreen from "./screens/LoginScreen";
 
 const App: React.FC = () => {
+  // const [signedIn] = useAuth();
+  useFirebase();
+
   return (
     <PLThemeProvider>
+      {/* {
+        signedIn
+        ? <SingedIn />
+        : <SignedOut />
+       } */}
       <Router>
-        <Route path="/" component={LoginScreen} />
+        <Routes />
       </Router>
     </PLThemeProvider>
   );

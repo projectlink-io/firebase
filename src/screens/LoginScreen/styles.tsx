@@ -11,8 +11,12 @@ export const StyledLoginScreen = styled(Flex)`
 `;
 
 export const StyledImage = styled(Box)`
-  background-image: url(${img});
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 100%;
+  display: none;
+  @media (min-width: ${props => props.theme.breakpoints[0]}) {
+    display: block;
+    background-image: url(${img});
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 100%;
+  }
 `;
