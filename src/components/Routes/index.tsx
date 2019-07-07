@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 /**
  * Routes
  */
-const LoginScreen = React.lazy(() => import("../../screens/LoginScreen"));
+const LoginScreen = React.lazy(() => import("../../screens/SignedOut"));
 // const Home = React.lazy(() => import("../../screens/Home"));
 import Spinner from "../Spinner";
 

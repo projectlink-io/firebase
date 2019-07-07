@@ -1,68 +1,79 @@
-import { auth } from "firebase";
+import { auth, initializeApp } from "firebase";
 
-class Auth implements Auth {
-  providers = {
+var firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+};
+
+const Auth = (function() {
+  const persistedAuthStateKey = "projectLinkIsAuthenticated"
+
+  initializeApp(firebaseConfig);
+
+  const providers = {
     google: new auth.GoogleAuthProvider(),
     email: new auth.EmailAuthProvider(),
   }
-  persistedAuthStateKey = "authenticatedWithProjectLink"
-  
-  public constructor() {
-    auth().useDeviceLanguage();
-  }
 
-  public onAuthStateChanged(cb: () => void) {
-    auth().onAuthStateChanged(cb);
-  }
-
-  public persistAuthState(authenticated: boolean) {
-    if (!localStorage) {
-      this.handleAuthError("localStorage not found");
-    }
-
-    if (authenticated) {
-      localStorage.setItem(this.persistedAuthStateKey, "true")
-    } else {
-      localStorage.clear()
-    }
-  }
-
-  public getPersistedAuthState() {
-    if (!localStorage) {
-      this.handleAuthError("localStorage not found");
-    }
-    return localStorage.getItem(this.persistedAuthStateKey);
-  }
-
-  private handleAuthError(message: string, error?: Error) {
+  function handleAuthError(message: string, error?: Error) {
     console.warn(message);
-    // Sentry log errors!
-    // Display user feedback!
   }
-}
 
-interface Auth {
+  return {
+    init: function() {
+      auth().useDeviceLanguage()
+    },
+    /**
+     * Adds an observer to user's auth state
+     */
+    onAuthStateChanged: function(cb: () => void) {
+      auth().onAuthStateChanged(cb);
+    },
 
-  /**
-   * Listens to changes in firebase auth
-   */
-  onAuthStateChanged: (cb: () => void) => void;
+    /**
+     * Stores whether a user is is logged in
+     * or not on window.localStorage
+     */
+    persistAuthState: function(authenticated: boolean) {
+      if (!localStorage) {
+        handleAuthError("localStorage not found");
+      }
 
-  /**
-   * Store auth information on localStorage
-   * so we can immediately sign people in
-   */
-  persistAuthState: (p: PersistedAuthState) => void;
+      if (authenticated) {
+        localStorage.setItem(persistedAuthStateKey, "true")
+        localStorage.setItem("touched", "true")
+      } else {
+        localStorage.removeItem(persistedAuthStateKey);
+      }
+    },
 
-  /**
-   * Handles errors that are not handled by
-   * injected error handlers
-   */
-  handleAuthError: (message: string, error?: Error) => void;
-}
+    /**
+     * Returns whether a user has a persisted
+     * session
+     */
+    currentUserIsAuthenticated: function() {
+      if (!localStorage) {
+        handleAuthError("localStorage not found");
+      }
+      return Boolean(localStorage.getItem(persistedAuthStateKey));
+    },
 
-interface PersistedAuthState {
-  isAuthenticated: boolean;
-}
+    /**
+     * Returns whether a user has a persisted
+     * session
+     */
+    currentUserIsReturning: function() {
+      if (!localStorage) {
+        handleAuthError("localStorage not found");
+      }
+      return localStorage.getItem("touched") === "true";
+    }
+  }
+})();
 
 export default Auth;

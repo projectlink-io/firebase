@@ -1,23 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 
-import Routes from "./components/Routes";
 import PLThemeProvider from './components/ThemeProvider';
+import SignedOut from "./screens/SignedOut";
+import SignedIn from "./screens/SignedIn";
+import Auth from "./services/auth";
 
 const App: React.FC = () => {
-  // const [signedIn] = useAuth();
-  useFirebase();
+  Auth.init();
+  let signedIn = Auth.currentUserIsAuthenticated();
 
   return (
     <PLThemeProvider>
-      {/* {
+      {
         signedIn
-        ? <SingedIn />
+        ? <SignedIn />
         : <SignedOut />
-       } */}
-      <Router>
-        <Routes />
-      </Router>
+       }
     </PLThemeProvider>
   );
 }

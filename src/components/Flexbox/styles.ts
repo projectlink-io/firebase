@@ -25,8 +25,17 @@ export interface FlexProps {
   justifyContent?: string;
 }
 export interface BoxProps {
+  /**
+   * width
+   */
   w?: string;
+  /**
+   * width on medium screens
+   */
   wm?: string;
+  /**
+   * width on large screens
+   */
   wl?: string;
   alignSelf?: string;
   flexGrow?: number;

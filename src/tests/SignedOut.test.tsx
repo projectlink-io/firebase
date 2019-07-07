@@ -1,12 +1,12 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { LoginForm } from "../components/LoginForm";
+import SignedOut from "../screens/SignedOut";
 
 test("google login", () => {
   const handleClick = jest.fn();
 
   const { getByText } = render(
-    <LoginForm />,
+    <SignedOut />,
   )
 
   const googleSignInButton = getByText("Sign in with google");
@@ -19,7 +19,7 @@ test("email login", () => {
   const handleSubmit = jest.fn();
 
   const { getByLabelText } = render(
-    <LoginForm />,
+    <SignedOut />,
   )
 
   const emailInput = getByLabelText("email") as HTMLInputElement;
