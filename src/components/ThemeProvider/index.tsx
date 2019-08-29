@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import { ThemeProvider, DefaultTheme } from "styled-components";
+import { ThemeProvider } from "theme-ui";
 import { useTheme } from "../../hooks";
 import GlobalStyles from "../GlobalStyles"
 import themes, {themeConstants} from "./themes";
@@ -12,19 +12,7 @@ import themes, {themeConstants} from "./themes";
  * @param themeProp the key of a theme property
  * @returns the value of the theme property
  */
-export const themed = (themeProp: keyof DefaultTheme): any => (props: { theme: DefaultTheme }) => props.theme[themeProp];
-
-/**
- * spacing
- *
- * Keeps spacing consistent by
- * multiplying its parameter by
- * themeConstants.pixelGrid
- *
- * @param multiplier
- * @returns a numeric value
- */
-export const spacing = (multiplier: number) => multiplier * themeConstants.pixelGrid;
+// export const themed = (themeProp: keyof DefaultTheme): any => (props: { theme: DefaultTheme }) => props.theme[themeProp];
 
 /**
  * PLThemeProvider

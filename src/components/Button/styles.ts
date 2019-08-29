@@ -22,6 +22,3 @@ export const StyledButton = styled.button`
   }
 `;
 
-export interface ButtonProps {
-  title: string;
-}
