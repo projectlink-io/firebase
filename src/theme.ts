@@ -70,12 +70,23 @@ theme.colors = {
 theme.radii = {
   small: 3,
   large: 7,
+  default: 7,
 }
 
-theme.mediaQueries = {
-  small: `@media screen and (min-width: 40em)`,
-  medium: `@media screen and (min-width: 52em)`,
-  large: `@media screen and (min-width: 64em)`,
-};
+theme.breakpoints = ["40em", "52em", "64em"]
+
+theme.buttons = {
+  primary: {
+    bg: '',
+    color: '',
+    boxShadow: '',
+    '&:hover': {
+
+    },
+  },
+}
 
 export default theme;
+
+/** typings */
+export type ButtonVariants = "ghost" | "primary" | "secondary";

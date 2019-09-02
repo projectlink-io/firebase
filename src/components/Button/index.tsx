@@ -1,20 +1,32 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { FC } from "react";
+import { ButtonVariants } from '../../theme';
 
-const Button: FC<ButtonProps> = ({ title }) =>
+const Button: FC<ButtonProps> = ({ title, variant = 'primary' }) =>
   <button
     sx={{
-      border: "none",
-      borderRadius: "small",
-
-      color: ,
+      border: 0,
+      borderRadius: 'small',
+      appearance: 'none',
+      display: 'inline-block',
+      textAlign: 'center',
+      lineHeight: 'inherit',
+      textDecoration: 'none',
+      fontSize: 'inherit',
+      fontWeight: 'bold',
+      m: 0,
+      px: 3,
+      py: 2,
+      
+      variant: `buttons.${variant}`
     }}>
     {title}
   </button>
 
 interface ButtonProps {
   title: string;
+  variant: ButtonVariants,
 }
 
 // export const StyledButton = styled.button`
