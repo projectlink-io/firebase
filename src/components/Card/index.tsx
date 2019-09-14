@@ -1,21 +1,31 @@
 import React, {FC} from "react";
-import {StyledCard, CardProps} from "./styles";
+import {StyledCard} from "./styles";
 
 /**
  * Card
  * 
  * A versatile card component
  */
-const Card: FC<CardProps> = ({ variant, children, ...rest }) => {
+const Card: FC<any> = ({ variant, children, ...rest }) => {
   return (
-    <StyledCard variant={variant} { ...rest }>
+    <div
+     sx={{
+      border: '1px solid #777',
+      padding: 16,
+      variant: `cards.${variant}`,
+     }}>
       {children}
-    </StyledCard>
+    </div>
   );
 }
 
 Card.defaultProps = {
-  variant: "regular",
+  variant: 'default',
+}
+
+interface CardProps {
+  title: string;
+  variant: CardVariants,
 }
 
 export default Card;

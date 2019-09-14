@@ -7,22 +7,22 @@ import { useEffect, useState, Dispatch, SetStateAction, useCallback } from "reac
  */
 
 /**
- * useTheme
+ * useDarkmode
  * 
  * hook that keeps track of
  * app theme. the hook first
  * queries the browser for
  * system darkmode
  */
-export function useTheme(): UseTheme {
+export function useDarkmode(): UseDarkmode {
   const [theme, setTheme] = useState<Theme>("light");
 
-  useDarkMode(useCallback(setTheme, []));
+  useBrowserDarkmode(useCallback(setTheme, []));
 
   return [theme, setTheme];
 }
 
-const useDarkMode = (setTheme: Dispatch<SetStateAction<Theme>>) => {
+const useBrowserDarkmode = (setTheme: Dispatch<SetStateAction<Theme>>) => {
   useEffect(() => {
     /**
      * opt out if there's no support
@@ -44,5 +44,5 @@ const useDarkMode = (setTheme: Dispatch<SetStateAction<Theme>>) => {
   }, [setTheme])
 }
 
-type UseTheme = [Theme, Dispatch<SetStateAction<Theme>>]
+type UseDarkmode = [Theme, Dispatch<SetStateAction<Theme>>]
 type Theme = "light" | "dark";

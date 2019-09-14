@@ -57,12 +57,20 @@ theme.space = [
 ],
 
 theme.colors = {
-  background: "white",
-  text: "black",
+  text: '#000',
+  background: '#fff',
+  primary: '#07c',
+  secondary: '#05a',
+  accent: '#609',
+  muted: '#f6f6f6f',
   modes: {
     dark: {
-      background: "black",
-      text: "white",
+      text: '#fff',
+      background: '#000',
+      primary: '#07c',
+      secondary: '#05a',
+      accent: '#609',
+      muted: '#f6f6f6f',
     },
   },
 }
@@ -77,11 +85,11 @@ theme.breakpoints = ["40em", "52em", "64em"]
 
 theme.buttons = {
   primary: {
-    bg: '',
-    color: '',
+    bg: 'primary',
+    color: 'background',
     boxShadow: '',
     '&:hover': {
-
+      bg: 'secondary',
     },
   },
 }
@@ -90,3 +98,4 @@ export default theme;
 
 /** typings */
 export type ButtonVariants = "ghost" | "primary" | "secondary";
+export type CardVariants = "default" | "emphasized";

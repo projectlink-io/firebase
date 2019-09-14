@@ -9,8 +9,8 @@
     "react-dom": "16.8.6",
     "react-router-dom": "5.0.1",
     "react-scripts": "3.0.1",
-    "styled-components": "^5.0.0-beta.6",
-    "theme-ui": "0.2.36",
+    "styled-components": "^4.3.2",
+    "theme-ui": "0.2.42",
     "typeface-inter": "0.0.77",
     "typescript": "3.5.1"
   },
