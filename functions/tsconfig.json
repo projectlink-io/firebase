@@ -2,14 +2,18 @@
   "compilerOptions": {
     "module": "commonjs",
     "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
-    "outDir": "lib",
+    "outDir": "../dist",
     "sourceMap": true,
+    "skipLibCheck": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "isolatedModules": false
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "./index.ts"
   ]
 }
