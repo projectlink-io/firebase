@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import { onUpdateCompany, onCreateCompany } from './src/triggers/organizations'
+import { onUpdateCompany, onCreateCompany } from './triggers/organizations'
 
 admin.initializeApp()
 
