@@ -1,9 +1,9 @@
 import { firestore } from 'firebase-admin'
 import * as functions from 'firebase-functions'
-import { Collections } from '../../../src/constants'
-import { keyify } from '../../../src/util/categories'
-import { Category } from '../../../src/models'
-import index, { formatCompanyRecord } from '../../../src/services/algolia'
+import { constants, search, models } from '@projectlink/core'
+import { eachIsEqual } from '../util'
+import initIndex from '../util/algolia'
+import categoriesService from '../services/categories'
 
 /**
  * When companies are created or updated we save category strings onto the document.
@@ -13,12 +13,15 @@ import index, { formatCompanyRecord } from '../../../src/services/algolia'
  * Once the categories are up to date we save the company as an algolia record.
  */
 
+const allIndex = initIndex('companiesprojects:all');
+const organizationsIndex = initIndex('organizations:all');
+
 const onCreateCompany = functions.firestore
-  .document(`${Collections.organizations}/{uid}`)
+  .document(`${constants.Collections.organizations}/{uid}`)
   .onCreate(handleCreateCompany)
 
 const onUpdateCompany = functions.firestore
-  .document(`${Collections.organizations}/{uid}`)
+  .document(`${constants.Collections.organizations}/{uid}`)
   .onUpdate(handleUpdateCompany)
 
 async function handleCreateCompany(snap: functions.firestore.DocumentSnapshot, _context: functions.EventContext) {
@@ -54,13 +57,10 @@ async function handleUpdateCompany(change: functions.Change<functions.firestore.
 async function populateCategories(snap: functions.firestore.DocumentSnapshot) {
   const categories: firestore.DocumentSnapshot[] = await Promise.all(snap.data()?.subindustries.map((s: string) => {
     if (!s) return null
-    return firestore()
-      .collection(Collections.categories)
-      .doc(keyify(s))
-      .get()
+    return categoriesService.getByName(s)
   }))
 
-  const data = (doc: firestore.DocumentSnapshot) => doc.data?.() as Category
+  const data = (doc: firestore.DocumentSnapshot) => doc.data?.() as models.Category
   const prop = (p: string) => (o: object) => o[p]
   const getSector = prop('sector')
   const getIndustry = prop('industry')
@@ -76,7 +76,7 @@ async function populateCategories(snap: functions.firestore.DocumentSnapshot) {
 
   await Promise.all(categories.map(cat => {
     return firestore()
-      .collection(Collections.organizations)
+      .collection(constants.Collections.organizations)
       .doc(snap.id)
       .update({
         sectors,
@@ -99,16 +99,10 @@ async function populateCategories(snap: functions.firestore.DocumentSnapshot) {
 
 async function saveRecord(document: any) {
   console.info(`indexing record ${JSON.stringify(document)}`)
-  await index.saveObject(formatCompanyRecord(document))
-}
-
-/**
- * shallow compare two arrays of strings
- */
-export const eachIsEqual = (arr1: string[], arr2: string[]) => {
-  if (!arr1 || !arr2) return false;
-  if (arr1.length !== arr2.length) return false;
-  return arr1.every((_e, i) => arr1[i] === arr2[i])
+  await Promise.all([
+    await organizationsIndex.saveObject(search.formatCompanyRecord(document)),
+    await allIndex.saveObject(search.formatCompanyRecord(document)),
+  ]);
 }
 
 export {
