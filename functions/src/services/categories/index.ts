@@ -1,9 +1,9 @@
 import { firestore } from 'firebase-admin'
-import { constants } from "@projectlink/core"
+import { FirestoreCollections } from '@projectlink/core'
 
 const getByName = async (name) => {
   return await firestore()
-    .collection(constants.Collections.categories)
+    .collection(FirestoreCollections.categories)
     .where("name", "==", name)
     .get()
 }

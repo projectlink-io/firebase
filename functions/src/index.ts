@@ -1,9 +1,11 @@
 import * as admin from 'firebase-admin';
-import { onUpdateCompany, onCreateCompany } from './triggers/organizations'
+// import { onUpdateOrganization, onCreateOrganization } from './triggers/organizations'
+import { onCreateUser } from './triggers/auth'
 
 admin.initializeApp()
 
 export {
-  onCreateCompany,
-  onUpdateCompany,
+  // onCreateOrganization,
+  // onUpdateOrganization,
+  onCreateUser,
 }
