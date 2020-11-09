@@ -1,0 +1,18 @@
+on: [push, pull_request]
+jobs:
+  test:
+    name: Run all tests using Firebase Emulator Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - name: Install Firebase Emulator Suite
+        run: npm i -g firebase-tools
+      - name: Install dependencies
+        run: npm i
+        working-directory: functions
+      - name: Run tests
+        run: firebase emulators:exec 'npm test'
+        working-directory: functions
